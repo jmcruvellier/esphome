@@ -14,23 +14,22 @@ substitutions:
 
 packages:
   device: !include devices/freenove_wrover.yaml
-  i2c: !include components/i2c_esp32.yaml
 
 esp32_camera:
- external_clock:
-   pin: GPIO21
-   frequency: 20MHz
- i2c_pins:
-   sda: GPIO26
-   scl: GPIO27
- data_pins: [GPIO4, GPIO5, GPIO18, GPIO19, GPIO36, GPIO39, GPIO34, GPIO35]
- vsync_pin: GPIO25
- href_pin: GPIO23
- pixel_clock_pin: GPIO22
- max_framerate: 60 fps
- idle_framerate: 0.05 fps
- resolution: 1600x1200
- jpeg_quality: 35
+  external_clock:
+    pin: GPIO21
+    frequency: 20MHz
+  i2c_pins:
+    sda: GPIO26
+    scl: GPIO27
+  data_pins: [GPIO4, GPIO5, GPIO18, GPIO19, GPIO36, GPIO39, GPIO34, GPIO35]
+  vsync_pin: GPIO25
+  href_pin: GPIO23
+  pixel_clock_pin: GPIO22
+  resolution: 640x480
+  vertical_flip: False
+  brightness: 0
+  jpeg_quality: 10
 
-  Image settings
- name: ESP Camera
+  # Image settings
+  name: ESP Camera
