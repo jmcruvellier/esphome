@@ -1,13 +1,13 @@
 ---
-# Test Uptime
+# Test Display
 #
 # Displays device uptime on LCD.
 # Using a Freenove ESP32 Wrover
 #
 substitutions:
-  label: testuptime
-  slug: test_uptime
-  name: Test Uptime
+  label: testdisplay
+  slug: test_display
+  name: Test Display
   description: Displays device uptime on LCD.
   encryption_key: !secret esphome_test_uptime_encryption_key
   ota_password: !secret esphome_test_uptime_ota_password
