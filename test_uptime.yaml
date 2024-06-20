@@ -1,0 +1,50 @@
+---
+# Test Uptime
+#
+# Displays device uptime on LCD.
+# Using a Freenove ESP32 Wrover
+#
+substitutions:
+  label: testuptime
+  slug: test_uptime
+  name: Test Uptime
+  description: Displays device uptime on LCD.
+  encryption_key: !secret esphome_test_uptime_encryption_key
+  ota_password: !secret esphome_test_uptime_ota_password
+
+packages:
+  device: !include devices/freenove_wrover.yaml
+  i2c: !include components/i2c_esp32.yaml
+
+display:
+  - platform: lcd_pcf8574
+    dimensions: 16x2
+    address: 0x27
+    lambda: |-
+      switch (id(page)){
+        case 1:
+          it.printf("Test Uptime");
+          break;
+        case 2:
+          time_t raw_time = id(sensor_uptime_timestamp).state;
+          struct tm * timeinfo;
+          char buffer[20];
+          timeinfo = localtime(&raw_time);
+          strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M", timeinfo);
+          it.printf("%s", buffer);
+          break;
+      }
+
+globals:
+- id: page
+  type: int
+  initial_value: "1"
+
+interval:
+- interval: 5s
+  then:
+    - lambda: |-
+        id(page) = (id(page) + 1);
+        if (id(page) > 2) {
+          id(page) = 1;
+        }

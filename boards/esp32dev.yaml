@@ -1,0 +1,15 @@
+---
+# Freenove ESP32 Wrover
+#
+# An ESP32-based board with 4MB flash, Wi-Fi & Bluetooth
+#
+# https://www.wemos.cc/en/latest/d32/d32.html
+#
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+    version: recommended
+    # Custom sdkconfig options
+    sdkconfig_options:
+      COMPILER_OPTIMIZATION_SIZE: y

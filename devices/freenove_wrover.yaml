@@ -1,0 +1,8 @@
+---
+# Device: Freenove ESP32 Wrover
+#
+# This is my ESPHome device template for the Freenove ESP32 Wrover
+#
+packages:
+  <<: !include_dir_named ../common
+  board: !include ../boards/esp32dev.yaml
