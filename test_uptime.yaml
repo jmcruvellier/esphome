@@ -23,15 +23,19 @@ display:
     lambda: |-
       switch (id(page)){
         case 1:
-          it.printf("Test Uptime");
-          break;
+          {
+            time_t raw_time = id(sensor_uptime_timestamp).state;
+            struct tm * timeinfo;
+            char buffer[20];
+            timeinfo = localtime(&raw_time);
+            strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M", timeinfo);
+            it.printf("Uptime since");
+            it.printf(0, 1, "%s", buffer);
+            break;
+          }
         case 2:
-          time_t raw_time = id(sensor_uptime_timestamp).state;
-          struct tm * timeinfo;
-          char buffer[20];
-          timeinfo = localtime(&raw_time);
-          strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M", timeinfo);
-          it.printf("%s", buffer);
+          it.printf("Wifi Signal");
+          it.printf(0, 1, "%.0f%%", id(sensor_wifi_signal_percentage).state);
           break;
       }
 
