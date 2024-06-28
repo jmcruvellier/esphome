@@ -8,4 +8,4 @@
 i2c:
   sda: GPIO21
   scl: GPIO22
-  frequency: 400kHz
+#  frequency: 400kHz

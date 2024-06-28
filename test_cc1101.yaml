@@ -1,0 +1,19 @@
+---
+# Test CC1101
+#
+# Displays device uptime on LCD.
+# Using a Freenove ESP32 Wrover
+#
+substitutions:
+  label: testcc1101
+  slug: test_cc1101
+  name: Test CC1101
+  description: Displays CC1101 data on LCD.
+  encryption_key: !secret esphome_test_uptime_encryption_key
+  ota_password: !secret esphome_test_uptime_ota_password
+
+packages:
+  device: !include devices/freenove_wrover.yaml
+  i2c: !include components/i2c_esp32.yaml
+  cc1101: !include components/cc1101.yaml
+
